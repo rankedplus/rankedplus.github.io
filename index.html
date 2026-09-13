@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RankedPlus | Minecraft PvP</title>
+
+```
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: #0b0d10;
+        color: #f2f2f2;
+    }
+
+    /* NAVBAR */
+    nav {
+        height: 70px;
+        background: #11151a;
+        border-bottom: 1px solid #242a31;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 7%;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+    }
+
+    .logo {
+        font-size: 23px;
+        font-weight: 800;
+        color: #ffffff;
+    }
+
+    .logo span {
+        color: #55aaff;
+    }
+
+    nav a {
+        color: #aaa;
+        text-decoration: none;
+        margin-left: 25px;
+        font-size: 14px;
+    }
+
+    nav a:hover {
+        color: white;
+    }
+
+    /* HERO */
+    .hero {
+        text-align: center;
+        padding: 80px 20px 60px;
+        background:
+            radial-gradient(circle at center, #182333 0%, #0b0d10 65%);
+    }
+
+    .hero h1 {
+        font-size: 52px;
+        font-weight: 900;
+        margin-bottom: 15px;
+    }
+
+    .hero h1 span {
+        color: #55aaff;
+    }
+
+    .hero p {
+        color: #999;
+        font-size: 17px;
+        margin-bottom: 30px;
+    }
+
+    .server-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .server-button {
+        background: #151b22;
+        border: 1px solid #303944;
+        padding: 13px 20px;
+        border-radius: 7px;
+        font-size: 14px;
+    }
+
+    .online {
+        color: #55dd88;
+    }
+
+    /* CONTAINER */
+    .container {
+        width: 86%;
+        max-width: 1200px;
+        margin: 50px auto;
+    }
+
+    .section-title {
+        font-size: 25px;
+        margin-bottom: 20px;
+    }
+
+    /* STATS */
+    .stats {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+        margin-bottom: 45px;
+    }
+
+    .stat {
+        background: #11151a;
+        border: 1px solid #242a31;
+        border-radius: 9px;
+        padding: 22px;
+    }
+
+    .stat h3 {
+        font-size: 13px;
+        color: #888;
+        margin-bottom: 10px;
+    }
+
+    .stat strong {
+        font-size: 27px;
+    }
+
+    /* SEARCH */
+    .search {
+        width: 100%;
+        padding: 15px;
+        background: #11151a;
+        border: 1px solid #303944;
+        border-radius: 7px;
+        color: white;
+        outline: none;
+        margin-bottom: 15px;
+        font-size: 14px;
+    }
+
+    .search:focus {
+        border-color: #55aaff;
+    }
+
+    /* LEADERBOARD */
+    .leaderboard {
+        background: #11151a;
+        border: 1px solid #242a31;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .table-header,
+    .player {
+        display: grid;
+        grid-template-columns: 70px 2fr 1fr 1fr 1fr 1fr;
+        align-items: center;
+        padding: 17px 20px;
+    }
+
+    .table-header {
+        background: #171c22;
+        color: #777;
+        font-size: 12px;
+        text-transform: uppercase;
+    }
+
+    .player {
+        border-top: 1px solid #20262d;
+        transition: background 0.15s;
+    }
+
+    .player:hover {
+        background: #171c22;
+    }
+
+    .rank {
+        font-weight: 800;
+        color: #888;
+    }
+
+    .player-name {
+        font-weight: 700;
+    }
+
+    .tier {
+        display: inline-block;
+        padding: 5px 9px;
+        border-radius: 5px;
+        background: #1c2836;
+        color: #55aaff;
+        font-size: 12px;
+        font-weight: 700;
+    }
+
+    .rating {
+        font-weight: 800;
+    }
+
+    .positive {
+        color: #55dd88;
+    }
+
+    .negative {
+        color: #ff6666;
+    }
+
+    /* PLAYER CARD */
+    .profile {
+        margin-top: 45px;
+        background: #11151a;
+        border: 1px solid #242a31;
+        border-radius: 10px;
+        padding: 25px;
+    }
+
+    .profile-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .profile-stat {
+        background: #171c22;
+        padding: 17px;
+        border-radius: 7px;
+    }
+
+    .profile-stat small {
+        color: #777;
+    }
+
+    .profile-stat div {
+        font-size: 22px;
+        font-weight: bold;
+        margin-top: 5px;
+    }
+
+    /* FOOTER */
+    footer {
+        text-align: center;
+        color: #666;
+        border-top: 1px solid #20262d;
+        padding: 30px;
+        margin-top: 70px;
+        font-size: 13px;
+    }
+
+    /* MOBILE */
+    @media (max-width: 800px) {
+        .stats {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .table-header,
+        .player {
+            grid-template-columns: 45px 2fr 1fr 1fr;
+        }
+
+        .table-header div:nth-child(5),
+        .table-header div:nth-child(6),
+        .player div:nth-child(5),
+        .player div:nth-child(6) {
+            display: none;
+        }
+
+        .profile-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .hero h1 {
+            font-size: 38px;
+        }
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">Ranked<span>Plus</span></div>
+
+```
+<div>
+    <a href="#home">Home</a>
+    <a href="#leaderboard">Leaderboard</a>
+    <a href="#server">Server</a>
+</div>
+```
+
+</nav>
+
+<section class="hero" id="home">
+
+```
+<h1>Minecraft <span>Ranked PvP</span></h1>
+
+<p>Compete. Climb. Prove yourself.</p>
+
+<div class="server-buttons">
+
+    <div class="server-button">
+        Java:
+        <strong>roosevelt-colt.tun.ply.gg</strong>
+    </div>
+
+    <div class="server-button">
+        Bedrock:
+        <strong>roosevelt-vauxhall.tun.ply.gg:46599</strong>
+    </div>
+
+    <div class="server-button">
+        Status:
+        <strong class="online">● Online</strong>
+    </div>
+
+</div>
+```
+
+</section>
+
+<div class="container">
+
+```
+<div class="stats">
+
+    <div class="stat">
+        <h3>Players Ranked</h3>
+        <strong>127</strong>
+    </div>
+
+    <div class="stat">
+        <h3>Matches Played</h3>
+        <strong>3,842</strong>
+    </div>
+
+    <div class="stat">
+        <h3>Players Online</h3>
+        <strong class="online">14</strong>
+    </div>
+
+    <div class="stat">
+        <h3>Season</h3>
+        <strong>#1</strong>
+    </div>
+
+</div>
+
+<section id="leaderboard">
+
+    <h2 class="section-title">🏆 Leaderboard</h2>
+
+    <input
+        type="text"
+        class="search"
+        id="search"
+        placeholder="Search for a player..."
+    >
+
+    <div class="leaderboard">
+
+        <div class="table-header">
+            <div>#</div>
+            <div>Player</div>
+            <div>Rating</div>
+            <div>Tier</div>
+            <div>Wins</div>
+            <div>Win Rate</div>
+        </div>
+
+        <div id="players">
+
+            <div class="player">
+                <div class="rank">1</div>
+                <div class="player-name">Marlow</div>
+                <div class="rating">1854</div>
+                <div><span class="tier">LT1</span></div>
+                <div>238</div>
+                <div class="positive">82%</div>
+            </div>
+
+            <div class="player">
+                <div class="rank">2</div>
+                <div class="player-name">Viperkai</div>
+                <div class="rating">1792</div>
+                <div><span class="tier">HT1</span></div>
+                <div>214</div>
+                <div class="positive">79%</div>
+            </div>
+
+            <div class="player">
+                <div class="rank">3</div>
+                <div class="player-name">Drifted</div>
+                <div class="rating">1711</div>
+                <div><span class="tier">LT2</span></div>
+                <div>192</div>
+                <div class="positive">76%</div>
+            </div>
+
+            <div class="player">
+                <div class="rank">4</div>
+                <div class="player-name">Coldfier</div>
+                <div class="rating">1660</div>
+                <div><span class="tier">HT2</span></div>
+                <div>176</div>
+                <div class="positive">73%</div>
+            </div>
+
+            <div class="player">
+                <div class="rank">5</div>
+                <div class="player-name">TryHards</div>
+                <div class="rating">1598</div>
+                <div><span class="tier">LT3</span></div>
+                <div>155</div>
+                <div class="positive">70%</div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="profile" id="server">
+
+    <h2>Player Profile</h2>
+
+    <p style="color:#888; margin-top:8px;">
+        Example profile — replace this with data from your RankedPlus backend.
+    </p>
+
+    <div class="profile-grid">
+
+        <div class="profile-stat">
+            <small>Rating</small>
+            <div>1854</div>
+        </div>
+
+        <div class="profile-stat">
+            <small>Wins</small>
+            <div>238</div>
+        </div>
+
+        <div class="profile-stat">
+            <small>Losses</small>
+            <div>52</div>
+        </div>
+
+        <div class="profile-stat">
+            <small>Win Rate</small>
+            <div>82%</div>
+        </div>
+
+    </div>
+
+</section>
+```
+
+</div>
+
+<footer>
+    RankedPlus Minecraft PvP © 2026
+</footer>
+
+<script>
+
+    const search = document.getElementById("search");
+    const players = document.querySelectorAll(".player");
+
+    search.addEventListener("input", function () {
+
+        const query = this.value.toLowerCase();
+
+        players.forEach(player => {
+
+            const name =
+                player.querySelector(".player-name")
+                .textContent
+                .toLowerCase();
+
+            if (name.includes(query)) {
+                player.style.display = "grid";
+            } else {
+                player.style.display = "none";
+            }
+
+        });
+
+    });
+
+</script>
+
+</body>
+</html>
