@@ -6,229 +6,48 @@
   <title>RankedPlus — Live Dashboard</title>
   <style>
     :root {
-      --bg: #0b0f14;
-      --panel: #121820;
-      --border: #1e2a38;
-      --text: #e6edf3;
-      --muted: #8b9cb3;
-      --accent: #3b82f6;
-      --accent-hover: #2563eb;
-      --success: #22c55e;
-      --warning: #f59e0b;
-      --danger: #ef4444;
-      --live: #22c55e;
-      --recent: #3b82f6;
-      --unranked: #6b7280;
-      --radius: 12px;
-      --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      --bg: #0b0f14; --panel: #121820; --border: #1e2a38; --text: #e6edf3;
+      --muted: #8b9cb3; --accent: #3b82f6; --accent-hover: #2563eb;
+      --success: #22c55e; --danger: #ef4444; --radius: 12px;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: var(--font);
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      line-height: 1.5;
-    }
-    header {
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-      border-bottom: 1px solid var(--border);
-      padding: 1.25rem 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    header h1 {
-      font-size: 1.5rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      background: linear-gradient(90deg, #60a5fa, #a78bfa);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    header .api-base {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.875rem;
-      color: var(--muted);
-    }
-    header input[type="text"] {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 0.4rem 0.75rem;
-      border-radius: 8px;
-      width: 220px;
-      font-size: 0.875rem;
-    }
-    main {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 2rem 1.5rem 4rem;
-      display: grid;
-      gap: 1.5rem;
-    }
-    .card {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.5rem;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.25);
-    }
-    .card h2 {
-      font-size: 1.1rem;
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .card h2 span.icon { font-size: 1.25rem; }
-    label {
-      display: block;
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-bottom: 0.35rem;
-      font-weight: 500;
-    }
-    input, select, button {
-      font-family: inherit;
-      font-size: 0.95rem;
-    }
-    input, select {
-      width: 100%;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 0.6rem 0.85rem;
-      border-radius: 8px;
-      margin-bottom: 0.9rem;
-      transition: border-color 0.15s;
-    }
-    input:focus, select:focus {
-      outline: none;
-      border-color: var(--accent);
-    }
-    .row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-    }
-    @media (max-width: 640px) {
-      .row { grid-template-columns: 1fr; }
-    }
-    button {
-      background: var(--accent);
-      color: white;
-      border: none;
-      padding: 0.65rem 1.25rem;
-      border-radius: 8px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.15s, transform 0.1s;
-    }
+    body { font-family: system-ui, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; padding: 0; }
+    header { background: #0f172a; border-bottom: 1px solid var(--border); padding: 1.25rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+    header h1 { font-size: 1.5rem; background: linear-gradient(90deg, #60a5fa, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    header input { background: var(--panel); border: 1px solid var(--border); color: var(--text); padding: 0.4rem 0.75rem; border-radius: 8px; width: 220px; }
+    main { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem; display: grid; gap: 1.5rem; }
+    .card { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; }
+    .card h2 { font-size: 1.1rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+    label { display: block; font-size: 0.8rem; color: var(--muted); margin-bottom: 0.35rem; font-weight: 500; }
+    input { width: 100%; background: var(--bg); border: 1px solid var(--border); color: var(--text); padding: 0.6rem 0.85rem; border-radius: 8px; margin-bottom: 0.9rem; }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    button { background: var(--accent); color: white; border: none; padding: 0.65rem 1.25rem; border-radius: 8px; font-weight: 600; cursor: pointer; }
     button:hover { background: var(--accent-hover); }
-    button:active { transform: scale(0.98); }
-    button:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-    button.secondary {
-      background: transparent;
-      border: 1px solid var(--border);
-      color: var(--text);
-    }
-    button.secondary:hover { background: var(--border); }
-    .result {
-      margin-top: 1rem;
-      padding: 1rem;
-      border-radius: 8px;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      font-family: ui-monospace, monospace;
-      font-size: 0.85rem;
-      white-space: pre-wrap;
-      word-break: break-all;
-      display: none;
-    }
+    .result { margin-top: 1rem; padding: 1rem; border-radius: 8px; background: var(--bg); border: 1px solid var(--border); font-family: monospace; font-size: 0.85rem; white-space: pre-wrap; display: none; }
     .result.show { display: block; }
     .result.error { border-color: var(--danger); color: #fca5a5; }
     .result.success { border-color: var(--success); }
-    .badge {
-      display: inline-block;
-      padding: 0.2rem 0.6rem;
-      border-radius: 999px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
-    .badge.LIVE { background: rgba(34,197,94,0.2); color: var(--live); }
-    .badge.RECENT { background: rgba(59,130,246,0.2); color: var(--recent); }
-    .badge.UNRANKED { background: rgba(107,114,128,0.25); color: var(--unranked); }
-    .player-card {
-      display: grid;
-      gap: 0.5rem;
-    }
-    .player-card .elo {
-      font-size: 2rem;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-    }
-    .player-card .rank {
-      font-size: 1.1rem;
-      color: #a78bfa;
-      font-weight: 600;
-    }
-    .samples {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 1rem;
-    }
-    .samples button {
-      font-size: 0.75rem;
-      padding: 0.35rem 0.7rem;
-      background: var(--border);
-    }
-    .samples button:hover { background: #2a3a4d; }
-    footer {
-      text-align: center;
-      color: var(--muted);
-      font-size: 0.8rem;
-      padding: 1.5rem;
-    }
-    .grid-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-    }
-    @media (max-width: 800px) {
-      .grid-2 { grid-template-columns: 1fr; }
-    }
+    .samples { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
+    .samples button { font-size: 0.75rem; padding: 0.35rem 0.7rem; background: var(--border); color: var(--text); }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    @media (max-width: 800px) { .grid-2, .row { grid-template-columns: 1fr; } }
+    footer { text-align: center; color: var(--muted); font-size: 0.8rem; padding: 2rem; }
   </style>
 </head>
 <body>
   <header>
     <h1>RankedPlus Dashboard</h1>
-    <div class="api-base">
-      <label for="apiBase" style="margin:0">API Base</label>
-      <input type="text" id="apiBase" value="" placeholder="http://localhost:8080" />
+    <div>
+      <label for="apiBase" style="display:inline; margin-right:0.5rem">API Base</label>
+      <input type="text" id="apiBase" placeholder="http://localhost:8080" />
     </div>
   </header>
 
   <main>
     <!-- Player Context -->
     <section class="card">
-      <h2><span class="icon">👤</span> Player Context</h2>
-      <p style="color:var(--muted);font-size:0.9rem;margin-bottom:1rem">
-        Look up a player's live / recent / unranked status on a ladder.
-      </p>
-      <div class="samples" id="samplePlayers">
-        <!-- filled by JS -->
-      </div>
+      <h2>👤 Player Context</h2>
+      <div class="samples" id="samplePlayers"></div>
       <div class="row">
         <div>
           <label for="playerUuid">Player UUID</label>
@@ -236,7 +55,7 @@
         </div>
         <div>
           <label for="ladder">Ladder</label>
-          <input id="ladder" type="text" value="duels" placeholder="duels / skywars / ..." />
+          <input id="ladder" type="text" value="duels" />
         </div>
       </div>
       <button id="btnLookup">Lookup Player</button>
@@ -246,28 +65,16 @@
     <div class="grid-2">
       <!-- Create Match -->
       <section class="card">
-        <h2><span class="icon">⚔️</span> Create Match</h2>
+        <h2>⚔️ Create Match</h2>
         <label for="cLadder">Ladder</label>
         <input id="cLadder" type="text" value="duels" />
         <div class="row">
-          <div>
-            <label for="playerA">Player A UUID</label>
-            <input id="playerA" type="text" placeholder="UUID" />
-          </div>
-          <div>
-            <label for="playerAIgn">Player A IGN</label>
-            <input id="playerAIgn" type="text" placeholder="Ign" />
-          </div>
+          <div><label for="playerA">Player A UUID</label><input id="playerA" type="text" /></div>
+          <div><label for="playerAIgn">Player A IGN</label><input id="playerAIgn" type="text" /></div>
         </div>
         <div class="row">
-          <div>
-            <label for="playerB">Player B UUID</label>
-            <input id="playerB" type="text" placeholder="UUID" />
-          </div>
-          <div>
-            <label for="playerBIgn">Player B IGN</label>
-            <input id="playerBIgn" type="text" placeholder="Ign" />
-          </div>
+          <div><label for="playerB">Player B UUID</label><input id="playerB" type="text" /></div>
+          <div><label for="playerBIgn">Player B IGN</label><input id="playerBIgn" type="text" /></div>
         </div>
         <button id="btnCreate">Create Match</button>
         <div id="createResult" class="result"></div>
@@ -275,170 +82,85 @@
 
       <!-- Resolve Match -->
       <section class="card">
-        <h2><span class="icon">🏆</span> Resolve Match</h2>
+        <h2>🏆 Resolve Match</h2>
         <label for="matchId">Match ID</label>
         <input id="matchId" type="number" placeholder="1" />
         <label for="winnerUuid">Winner UUID</label>
-        <input id="winnerUuid" type="text" placeholder="UUID of the winner" />
+        <input id="winnerUuid" type="text" />
         <button id="btnResolve">Resolve Match</button>
         <div id="resolveResult" class="result"></div>
       </section>
     </div>
-
-    <section class="card">
-      <h2><span class="icon">ℹ️</span> API Quick Reference</h2>
-      <pre style="font-size:0.8rem;color:var(--muted);overflow-x:auto">
-GET  /players/{uuid}/context/{ladder}   → PlayerContextResponse
-POST /matches                           → CreateMatchResponse
-     body: { ladder, playerA, playerB, playerAIgn, playerBIgn }
-POST /matches/{id}/resolve              → ResolveMatchResponse
-     body: { winner }
-      </pre>
-      <p style="margin-top:0.75rem;font-size:0.85rem;color:var(--muted)">
-        Seed players: Steelo, Nova_Rae, FreshSpawn, GapChaser, Boxelder.<br>
-        H2 console (while backend running): <code>/h2-console</code>
-      </p>
-    </section>
   </main>
 
-  <footer>
-    RankedPlus Backend · Live HTML frontend · Served from the same origin
-  </footer>
+  <footer><p>&copy; RankedPlus Live System Panel</p></footer>
 
   <script>
-    const SAMPLES = [
-      { name: 'Steelo (LIVE)', uuid: '11111111-1111-1111-1111-111111111111', ladder: 'duels' },
-      { name: 'Nova_Rae (RECENT)', uuid: '22222222-2222-2222-2222-222222222222', ladder: 'duels' },
-      { name: 'FreshSpawn (UNRANKED)', uuid: '33333333-3333-3333-3333-333333333333', ladder: 'duels' },
-      { name: 'GapChaser (skywars)', uuid: '44444444-4444-4444-4444-444444444444', ladder: 'skywars' },
-      { name: 'Boxelder', uuid: '55555555-5555-5555-5555-555555555555', ladder: 'duels' },
+    function getApiBase() {
+      const val = document.getElementById('apiBase').value.trim();
+      return val ? val.replace(/\/$/, '') : 'http://localhost:8080';
+    }
+
+    function showResult(elementId, data, isError = false) {
+      const el = document.getElementById(elementId);
+      el.className = `result show ${isError ? 'error' : 'success'}`;
+      el.textContent = typeof data === 'string' ? data : JSON.stringify(data, null, 2);
+    }
+
+    const samples = [
+      { uuid: '11111111-1111-1111-1111-111111111111', ladder: 'duels', label: 'Sample 1' },
+      { uuid: '22222222-2222-2222-2222-222222222222', ladder: 'skywars', label: 'Sample 2' }
     ];
-
-    const apiBaseInput = document.getElementById('apiBase');
-    // Default to same origin when served by the backend
-    if (!apiBaseInput.value) {
-      apiBaseInput.value = window.location.origin;
-    }
-
-    function apiBase() {
-      return (apiBaseInput.value || window.location.origin).replace(/\/$/, '');
-    }
-
-    function show(el, data, isError = false) {
-      el.classList.add('show');
-      el.classList.toggle('error', isError);
-      el.classList.toggle('success', !isError);
-      if (typeof data === 'object') {
-        el.textContent = JSON.stringify(data, null, 2);
-      } else {
-        el.textContent = String(data);
-      }
-    }
-
-    async function request(path, options = {}) {
-      const url = apiBase() + path;
-      const res = await fetch(url, {
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        ...options,
-      });
-      const text = await res.text();
-      let body;
-      try { body = text ? JSON.parse(text) : null; } catch { body = text; }
-      if (!res.ok) {
-        const msg = (body && body.message) || body || res.statusText;
-        throw new Error(`${res.status}: ${msg}`);
-      }
-      return body;
-    }
-
-    // Sample buttons
-    const sampleContainer = document.getElementById('samplePlayers');
-    SAMPLES.forEach(s => {
+    const container = document.getElementById('samplePlayers');
+    samples.forEach(s => {
       const btn = document.createElement('button');
-      btn.textContent = s.name;
-      btn.className = 'secondary';
-      btn.onclick = () => {
+      btn.textContent = s.label;
+      btn.addEventListener('click', () => {
         document.getElementById('playerUuid').value = s.uuid;
         document.getElementById('ladder').value = s.ladder;
-      };
-      sampleContainer.appendChild(btn);
+      });
+      container.appendChild(btn);
     });
 
-    // Lookup
-    document.getElementById('btnLookup').onclick = async () => {
+    document.getElementById('btnLookup').addEventListener('click', async () => {
       const uuid = document.getElementById('playerUuid').value.trim();
       const ladder = document.getElementById('ladder').value.trim();
-      const out = document.getElementById('contextResult');
-      if (!uuid || !ladder) {
-        show(out, 'UUID and ladder are required', true);
-        return;
-      }
+      if (!uuid || !ladder) return alert('Enter Player UUID and Ladder.');
       try {
-        const data = await request(`/players/${uuid}/context/${encodeURIComponent(ladder)}`);
-        // Pretty render
-        let html = '';
-        if (data.status) {
-          html += `<span class="badge ${data.status}">${data.status}</span> `;
-        }
-        html += `<div class="player-card" style="margin-top:0.75rem">`;
-        html += `<div>Player: <code>${data.playerUuid}</code></div>`;
-        html += `<div>Requested ladder: ${data.requestedLadder}</div>`;
-        if (data.ladder) html += `<div>Active ladder: ${data.ladder}</div>`;
-        if (data.elo != null) html += `<div class="elo">${data.elo} ELO</div>`;
-        if (data.rank) html += `<div class="rank">${data.rank}</div>`;
-        html += `</div>`;
-        out.classList.add('show');
-        out.classList.remove('error');
-        out.classList.add('success');
-        out.innerHTML = html + `<pre style="margin-top:1rem;opacity:0.7">${JSON.stringify(data, null, 2)}</pre>`;
-      } catch (e) {
-        show(out, e.message, true);
-      }
-    };
+        const res = await fetch(`${getApiBase()}/player/${uuid}/${ladder}`);
+        if (!res.ok) throw new Error(`Status: ${res.status}`);
+        showResult('contextResult', await res.json());
+      } catch (err) { showResult('contextResult', err.message, true); }
+    });
 
-    // Create
-    document.getElementById('btnCreate').onclick = async () => {
-      const out = document.getElementById('createResult');
-      const body = {
+    document.getElementById('btnCreate').addEventListener('click', async () => {
+      const payload = {
         ladder: document.getElementById('cLadder').value.trim(),
-        playerA: document.getElementById('playerA').value.trim(),
-        playerB: document.getElementById('playerB').value.trim(),
-        playerAIgn: document.getElementById('playerAIgn').value.trim(),
-        playerBIgn: document.getElementById('playerBIgn').value.trim(),
+        playerA: { uuid: document.getElementById('playerA').value.trim(), ign: document.getElementById('playerAIgn').value.trim() },
+        playerB: { uuid: document.getElementById('playerB').value.trim(), ign: document.getElementById('playerBIgn').value.trim() }
       };
+      if (!payload.ladder || !payload.playerA.uuid || !payload.playerB.uuid) return alert('Fill in Ladder and Player UUIDs.');
       try {
-        const data = await request('/matches', {
-          method: 'POST',
-          body: JSON.stringify(body),
+        const res = await fetch(`${getApiBase()}/match/create`, {
+          method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload)
         });
-        show(out, data);
-        if (data.matchId) {
-          document.getElementById('matchId').value = data.matchId;
-        }
-      } catch (e) {
-        show(out, e.message, true);
-      }
-    };
+        if (!res.ok) throw new Error(`Status: ${res.status}`);
+        showResult('createResult', await res.json());
+      } catch (err) { showResult('createResult', err.message, true); }
+    });
 
-    // Resolve
-    document.getElementById('btnResolve').onclick = async () => {
-      const out = document.getElementById('resolveResult');
-      const id = document.getElementById('matchId').value.trim();
-      const winner = document.getElementById('winnerUuid').value.trim();
-      if (!id || !winner) {
-        show(out, 'Match ID and winner UUID required', true);
-        return;
-      }
+    document.getElementById('btnResolve').addEventListener('click', async () => {
+      const matchId = document.getElementById('matchId').value.trim();
+      const winnerUuid = document.getElementById('winnerUuid').value.trim();
+      if (!matchId || !winnerUuid) return alert('Fill in Match ID and Winner UUID.');
       try {
-        const data = await request(`/matches/${id}/resolve`, {
-          method: 'POST',
-          body: JSON.stringify({ winner }),
+        const res = await fetch(`${getApiBase()}/match/resolve`, {
+          method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ matchId: parseInt(matchId, 10), winnerUuid })
         });
-        show(out, data);
-      } catch (e) {
-        show(out, e.message, true);
-      }
-    };
+        if (!res.ok) throw new Error(`Status: ${res.status}`);
+        showResult('resolveResult', await res.json());
+      } catch (err) { showResult('resolveResult', err.message, true); }
+    });
   </script>
 </body>
 </html>
