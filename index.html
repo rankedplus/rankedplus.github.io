@@ -37,6 +37,8 @@ body {
     min-height: 100vh;
 }
 
+/* NAVBAR */
+
 nav {
     height: 68px;
     background: #0d0f12ee;
@@ -72,6 +74,8 @@ nav a {
 nav a:hover {
     color: var(--orange);
 }
+
+/* HERO */
 
 .hero {
     text-align: center;
@@ -113,6 +117,8 @@ nav a:hover {
     font-size: 16px;
 }
 
+/* CONNECT BUTTONS */
+
 .connect {
     display: flex;
     justify-content: center;
@@ -136,11 +142,15 @@ nav a:hover {
     color: var(--orange);
 }
 
+/* MAIN */
+
 .container {
     width: 88%;
     max-width: 1200px;
     margin: 0 auto 70px;
 }
+
+/* STAT CARDS */
 
 .stats {
     display: grid;
@@ -180,6 +190,8 @@ nav a:hover {
     margin-right: 7px;
 }
 
+/* SECTIONS */
+
 .section {
     margin-top: 40px;
 }
@@ -188,6 +200,8 @@ nav a:hover {
     font-size: 26px;
     margin-bottom: 18px;
 }
+
+/* SEARCH */
 
 .search {
     width: 100%;
@@ -204,6 +218,8 @@ nav a:hover {
 .search:focus {
     border-color: var(--orange);
 }
+
+/* LEADERBOARD */
 
 .leaderboard {
     background: var(--panel);
@@ -267,6 +283,36 @@ nav a:hover {
     font-weight: 900;
 }
 
+/* EMPTY / LOADING / ERROR */
+
+.message {
+    padding: 35px 20px;
+    text-align: center;
+    color: var(--muted);
+}
+
+.message.error {
+    color: var(--red);
+}
+
+.retry {
+    margin-top: 15px;
+    padding: 9px 15px;
+    background: var(--panel-light);
+    border: 1px solid var(--border);
+    color: white;
+    border-radius: 7px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.retry:hover {
+    border-color: var(--orange);
+    color: var(--orange);
+}
+
+/* PROFILE */
+
 .profile {
     display: none;
     margin-top: 18px;
@@ -296,6 +342,10 @@ nav a:hover {
     color: var(--muted);
     font-size: 25px;
     cursor: pointer;
+}
+
+.close:hover {
+    color: white;
 }
 
 .profile-grid {
@@ -330,6 +380,8 @@ nav a:hover {
     color: #c9cbd0;
     font-size: 13px;
 }
+
+/* SERVER */
 
 .server-grid {
     display: grid;
@@ -376,17 +428,7 @@ nav a:hover {
     color: var(--orange);
 }
 
-.loading {
-    padding: 30px;
-    text-align: center;
-    color: var(--muted);
-}
-
-.error {
-    padding: 25px;
-    text-align: center;
-    color: var(--red);
-}
+/* FOOTER */
 
 footer {
     border-top: 1px solid var(--border);
@@ -396,6 +438,8 @@ footer {
     margin-top: 70px;
     font-size: 13px;
 }
+
+/* MOBILE */
 
 @media (max-width: 800px) {
 
@@ -488,181 +532,169 @@ footer {
 
 <div class="container">
 
+```
 <div class="stats">
 
-```
-<div class="stat">
-    <small>PLAYERS RANKED</small>
-    <strong id="playersRanked">0</strong>
-</div>
+    <div class="stat">
+        <small>PLAYERS RANKED</small>
+        <strong id="playersRanked">—</strong>
+    </div>
 
-<div class="stat">
-    <small>MATCHES PLAYED</small>
-    <strong id="matchesPlayed">0</strong>
-</div>
+    <div class="stat">
+        <small>MATCHES PLAYED</small>
+        <strong id="matchesPlayed">—</strong>
+    </div>
 
-<div class="stat">
-    <small>SERVER STATUS</small>
-    <strong class="online">
-        <span class="dot"></span>
-        <span id="serverStatus">Online</span>
-    </strong>
-</div>
+    <div class="stat">
+        <small>SERVER STATUS</small>
+        <strong class="online" id="serverStatus">
+            <span class="dot"></span>
+            Checking...
+        </strong>
+    </div>
 
-<div class="stat">
-    <small>SEASON</small>
-    <strong>#1</strong>
-</div>
-```
+    <div class="stat">
+        <small>SEASON</small>
+        <strong>#1</strong>
+    </div>
 
 </div>
 
 <section class="section" id="leaderboard">
 
-```
-<h2>
-    🏆 Leaderboard
-</h2>
+    <h2>🏆 Leaderboard</h2>
 
-<input
-    class="search"
-    id="search"
-    type="text"
-    placeholder="Search for a player..."
->
+    <input
+        class="search"
+        id="search"
+        type="text"
+        placeholder="Search for a player..."
+        autocomplete="off"
+    >
 
-<div class="leaderboard">
+    <div class="leaderboard">
 
-    <div class="row header">
+        <div class="row header">
 
-        <div>#</div>
-        <div>Player</div>
-        <div>Rating</div>
-        <div>Tier</div>
-        <div>Wins</div>
-        <div>Win Rate</div>
+            <div>#</div>
+            <div>Player</div>
+            <div>Rating</div>
+            <div>Tier</div>
+            <div>Wins</div>
+            <div>Win Rate</div>
 
-    </div>
+        </div>
 
-    <div id="leaderboardRows">
+        <div id="leaderboardRows">
 
-        <div class="loading">
-            Loading leaderboard...
+            <div class="message">
+                Loading leaderboard...
+            </div>
+
         </div>
 
     </div>
 
-</div>
+    <div class="profile" id="profile">
 
-<div class="profile" id="profile">
+        <div class="profile-top">
 
-    <div class="profile-top">
+            <h3 id="profileName">Player</h3>
 
-        <h3 id="profileName">
-            Player
-        </h3>
+            <button
+                class="close"
+                onclick="closeProfile()"
+                aria-label="Close profile"
+            >
+                ×
+            </button>
 
-        <button
-            class="close"
-            onclick="closeProfile()"
-        >
-            ×
-        </button>
+        </div>
+
+        <div class="profile-grid">
+
+            <div class="profile-stat">
+                <small>Rating</small>
+                <b id="profileRating">-</b>
+            </div>
+
+            <div class="profile-stat">
+                <small>Tier</small>
+                <b id="profileTier">-</b>
+            </div>
+
+            <div class="profile-stat">
+                <small>Wins</small>
+                <b id="profileWins">-</b>
+            </div>
+
+            <div class="profile-stat">
+                <small>Losses</small>
+                <b id="profileLosses">-</b>
+            </div>
+
+        </div>
+
+        <div class="notice">
+            Live data from the RankedPlus backend.
+        </div>
 
     </div>
-
-    <div class="profile-grid">
-
-        <div class="profile-stat">
-            <small>Rating</small>
-            <b id="profileRating">-</b>
-        </div>
-
-        <div class="profile-stat">
-            <small>Tier</small>
-            <b id="profileTier">-</b>
-        </div>
-
-        <div class="profile-stat">
-            <small>Wins</small>
-            <b id="profileWins">-</b>
-        </div>
-
-        <div class="profile-stat">
-            <small>Losses</small>
-            <b id="profileLosses">-</b>
-        </div>
-
-    </div>
-
-    <div class="notice">
-        Player information loaded directly from the RankedPlus backend.
-    </div>
-
-</div>
-```
 
 </section>
 
 <section class="section" id="server">
 
-```
-<h2>
-    🖥 Server
-</h2>
+    <h2>🖥 Server</h2>
 
-<div class="server-grid">
+    <div class="server-grid">
 
-    <div class="server">
+        <div class="server">
 
-        <div>
+            <div>
+                <div class="server-label">
+                    Java Edition
+                </div>
 
-            <div class="server-label">
-                Java Edition
+                <div class="server-ip">
+                    roosevelt-colt.tun.ply.gg
+                </div>
             </div>
 
-            <div class="server-ip">
-                roosevelt-colt.tun.ply.gg
-            </div>
+            <button
+                class="copy"
+                onclick="copyIP('roosevelt-colt.tun.ply.gg')"
+            >
+                Copy
+            </button>
 
         </div>
 
-        <button
-            class="copy"
-            onclick="copyIP('roosevelt-colt.tun.ply.gg')"
-        >
-            Copy
-        </button>
+        <div class="server">
 
-    </div>
+            <div>
+                <div class="server-label">
+                    Bedrock Edition
+                </div>
 
-    <div class="server">
-
-        <div>
-
-            <div class="server-label">
-                Bedrock Edition
+                <div class="server-ip">
+                    roosevelt-vauxhall.tun.ply.gg:46599
+                </div>
             </div>
 
-            <div class="server-ip">
-                roosevelt-vauxhall.tun.ply.gg:46599
-            </div>
+            <button
+                class="copy"
+                onclick="copyIP('roosevelt-vauxhall.tun.ply.gg:46599')"
+            >
+                Copy
+            </button>
 
         </div>
 
-        <button
-            class="copy"
-            onclick="copyIP('roosevelt-vauxhall.tun.ply.gg:46599')"
-        >
-            Copy
-        </button>
-
     </div>
-
-</div>
-```
 
 </section>
+```
 
 </div>
 
@@ -677,41 +709,69 @@ footer {
 RANKEDPLUS API
 ==========================================================
 
-This is your Cloudflare Quick Tunnel.
+Your Spring backend is exposed through this Cloudflare
+Quick Tunnel.
 
-IMPORTANT:
-Keep cloudflared running while you want the website
-to communicate with your local backend.
+The leaderboard endpoint currently returns:
+
+[]
+
+When real players exist, the endpoint will return them.
 */
 
 const API_URL =
     "https://living-premium-rotary-surfing.trycloudflare.com";
 
-const LEADERBOARD_URL =
-    API_URL + "/leaderboard";
-
 
 /*
 ==========================================================
-PLAYER DATA
+GLOBAL PLAYER DATA
 ==========================================================
 */
 
 let players = [];
 
+let filteredPlayers = [];
+
 
 /*
 ==========================================================
-WIN RATE
+HELPERS
 ==========================================================
 */
 
+function escapeHTML(text) {
+
+    return String(text ?? "").replace(
+        /[&<>"']/g,
+        function(character) {
+
+            const entities = {
+                "&": "&amp;",
+                "<": "&lt;",
+                ">": "&gt;",
+                '"': "&quot;",
+                "'": "&#039;"
+            };
+
+            return entities[character];
+
+        }
+    );
+
+}
+
+
 function getWinRate(player) {
 
-    const wins = Number(player.wins) || 0;
-    const losses = Number(player.losses) || 0;
+    const wins =
+        Number(player.wins) || 0;
 
-    const total = wins + losses;
+    const losses =
+        Number(player.losses) || 0;
+
+    const total =
+        wins + losses;
 
     if (total === 0) {
         return 0;
@@ -720,146 +780,6 @@ function getWinRate(player) {
     return Math.round(
         (wins / total) * 100
     );
-
-}
-
-
-/*
-==========================================================
-SECURITY
-==========================================================
-*/
-
-function escapeHTML(text) {
-
-    return String(text).replace(
-        /[&<>"']/g,
-        function(character) {
-
-            return {
-                "&": "&amp;",
-                "<": "&lt;",
-                ">": "&gt;",
-                '"': "&quot;",
-                "'": "&#039;"
-            }[character];
-
-        }
-    );
-
-}
-
-
-/*
-==========================================================
-LOAD LEADERBOARD FROM BACKEND
-==========================================================
-*/
-
-async function loadLeaderboard() {
-
-    const container =
-        document.getElementById(
-            "leaderboardRows"
-        );
-
-    container.innerHTML = `
-        <div class="loading">
-            Connecting to RankedPlus API...
-        </div>
-    `;
-
-    try {
-
-        const response =
-            await fetch(
-                LEADERBOARD_URL,
-                {
-                    method: "GET",
-                    headers: {
-                        "Accept": "application/json"
-                    }
-                }
-            );
-
-        if (!response.ok) {
-
-            throw new Error(
-                "HTTP " + response.status
-            );
-
-        }
-
-        const data =
-            await response.json();
-
-
-        if (!Array.isArray(data)) {
-
-            throw new Error(
-                "Leaderboard API did not return an array."
-            );
-
-        }
-
-
-        players = data.map(function(player) {
-
-            return {
-                uuid: player.uuid,
-                name: player.name || "Unknown",
-                rating: Number(player.rating) || 0,
-                tier: player.tier || "Unranked",
-                wins: Number(player.wins) || 0,
-                losses: Number(player.losses) || 0
-            };
-
-        });
-
-
-        renderLeaderboard(players);
-
-
-        document.getElementById(
-            "serverStatus"
-        ).textContent = "Online";
-
-
-    } catch (error) {
-
-        console.error(
-            "RankedPlus API error:",
-            error
-        );
-
-
-        document.getElementById(
-            "serverStatus"
-        ).textContent = "API Error";
-
-
-        const status =
-            document.querySelector(
-                "#serverStatus"
-            );
-
-        status.parentElement.classList.remove(
-            "online"
-        );
-
-        status.parentElement.style.color =
-            "var(--red)";
-
-
-        container.innerHTML = `
-            <div class="error">
-                Could not connect to the RankedPlus API.
-                <br><br>
-                Make sure the backend and Cloudflare tunnel are running.
-            </div>
-        `;
-
-    }
 
 }
 
@@ -877,19 +797,34 @@ function renderLeaderboard(list) {
             "leaderboardRows"
         );
 
-    container.innerHTML = "";
+    if (!Array.isArray(list)) {
+        list = [];
+    }
 
+    container.innerHTML = "";
 
     if (list.length === 0) {
 
-        container.innerHTML = `
-            <div class="loading">
-                No players found.
-            </div>
-        `;
+        const message =
+            document.createElement("div");
+
+        message.className = "message";
+
+        if (players.length === 0) {
+
+            message.textContent =
+                "No ranked players yet.";
+
+        } else {
+
+            message.textContent =
+                "No players match your search.";
+
+        }
+
+        container.appendChild(message);
 
         return;
-
     }
 
 
@@ -902,91 +837,305 @@ function renderLeaderboard(list) {
             "row player";
 
 
-        row.onclick =
+        row.addEventListener(
+            "click",
             function() {
-
                 openProfile(player);
+            }
+        );
 
-            };
+
+        const rank =
+            document.createElement("div");
+
+        rank.className = "rank";
+
+        rank.textContent =
+            index + 1;
 
 
-        row.innerHTML = `
+        const name =
+            document.createElement("div");
 
-            <div class="rank">
-                ${index + 1}
-            </div>
+        name.className =
+            "player-name";
 
-            <div class="player-name">
-                ${escapeHTML(player.name)}
-            </div>
+        name.textContent =
+            player.name ?? "Unknown";
 
-            <div class="rating">
-                ${player.rating}
-            </div>
 
-            <div>
-                <span class="tier">
-                    ${escapeHTML(player.tier)}
-                </span>
-            </div>
+        const rating =
+            document.createElement("div");
 
-            <div>
-                ${player.wins}
-            </div>
+        rating.className =
+            "rating";
 
-            <div class="online">
-                ${getWinRate(player)}%
-            </div>
+        rating.textContent =
+            Number(player.rating) || 0;
 
-        `;
 
+        const tierContainer =
+            document.createElement("div");
+
+        const tier =
+            document.createElement("span");
+
+        tier.className =
+            "tier";
+
+        tier.textContent =
+            player.tier ?? "Unranked";
+
+        tierContainer.appendChild(tier);
+
+
+        const wins =
+            document.createElement("div");
+
+        wins.textContent =
+            Number(player.wins) || 0;
+
+
+        const winRate =
+            document.createElement("div");
+
+        winRate.className =
+            "online";
+
+        winRate.textContent =
+            getWinRate(player) + "%";
+
+
+        row.appendChild(rank);
+        row.appendChild(name);
+        row.appendChild(rating);
+        row.appendChild(tierContainer);
+        row.appendChild(wins);
+        row.appendChild(winRate);
 
         container.appendChild(row);
 
     });
-
-
-    updateStats();
 
 }
 
 
 /*
 ==========================================================
-UPDATE STATS
+LOAD LEADERBOARD FROM SPRING BACKEND
 ==========================================================
 */
 
-function updateStats() {
+async function loadLeaderboard() {
 
-    document.getElementById(
-        "playersRanked"
-    ).textContent =
-        players.length;
+    const container =
+        document.getElementById(
+            "leaderboardRows"
+        );
 
-
-    const totalMatches =
-        players.reduce(
-            function(total, player) {
-
-                return total +
-                    Number(player.wins || 0) +
-                    Number(player.losses || 0);
-
-            },
-            0
+    const status =
+        document.getElementById(
+            "serverStatus"
         );
 
 
-    /*
-     * Every match has two players, so divide the
-     * total number of player results by 2.
-     */
+    container.innerHTML = `
+        <div class="message">
+            Loading leaderboard...
+        </div>
+    `;
 
-    document.getElementById(
-        "matchesPlayed"
-    ).textContent =
-        Math.floor(totalMatches / 2);
+
+    try {
+
+        const response =
+            await fetch(
+                API_URL + "/leaderboard",
+                {
+                    method: "GET",
+                    cache: "no-store",
+                    headers: {
+                        "Accept": "application/json"
+                    }
+                }
+            );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "HTTP " + response.status
+            );
+
+        }
+
+
+        const data =
+            await response.json();
+
+
+        if (!Array.isArray(data)) {
+
+            throw new Error(
+                "Backend returned invalid data."
+            );
+
+        }
+
+
+        players =
+            data.map(function(player) {
+
+                return {
+
+                    uuid:
+                        player.uuid ?? "",
+
+                    name:
+                        player.name ??
+                        player.ign ??
+                        "Unknown",
+
+                    rating:
+                        Number(
+                            player.rating ??
+                            player.elo ??
+                            0
+                        ),
+
+                    tier:
+                        player.tier ??
+                        player.rank ??
+                        player.rankLabel ??
+                        "Unranked",
+
+                    wins:
+                        Number(
+                            player.wins ?? 0
+                        ),
+
+                    losses:
+                        Number(
+                            player.losses ?? 0
+                        )
+
+                };
+
+            });
+
+
+        /*
+         * Sort highest rating first.
+         */
+
+        players.sort(
+            function(a, b) {
+                return b.rating - a.rating;
+            }
+        );
+
+
+        filteredPlayers =
+            [...players];
+
+
+        document.getElementById(
+            "playersRanked"
+        ).textContent =
+            players.length;
+
+
+        /*
+         * The backend currently doesn't expose a
+         * total-match endpoint, so calculate the
+         * total from player wins/losses.
+         */
+
+        const totalMatches =
+            players.reduce(
+                function(total, player) {
+
+                    return total +
+                        player.wins +
+                        player.losses;
+
+                },
+                0
+            );
+
+
+        document.getElementById(
+            "matchesPlayed"
+        ).textContent =
+            Math.floor(
+                totalMatches / 2
+            );
+
+
+        status.innerHTML =
+            '<span class="dot"></span> Online';
+
+        status.className =
+            "online";
+
+
+        renderLeaderboard(
+            filteredPlayers
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "RankedPlus API error:",
+            error
+        );
+
+
+        players = [];
+
+        filteredPlayers = [];
+
+
+        document.getElementById(
+            "playersRanked"
+        ).textContent =
+            "—";
+
+
+        document.getElementById(
+            "matchesPlayed"
+        ).textContent =
+            "—";
+
+
+        status.textContent =
+            "Offline";
+
+
+        status.className =
+            "online";
+
+
+        container.innerHTML = `
+            <div class="message error">
+
+                Unable to connect to the
+                RankedPlus backend.
+
+                <br>
+
+                <button
+                    class="retry"
+                    onclick="loadLeaderboard()"
+                >
+                    Retry
+                </button>
+
+            </div>
+        `;
+
+    }
 
 }
 
@@ -1033,22 +1182,22 @@ function openProfile(player) {
         "profile"
     ).classList.add("show");
 
+
+    document.getElementById(
+        "profile"
+    ).scrollIntoView({
+        behavior: "smooth",
+        block: "nearest"
+    });
+
 }
 
-
-/*
-==========================================================
-CLOSE PROFILE
-==========================================================
-*/
 
 function closeProfile() {
 
     document.getElementById(
         "profile"
-    ).classList.remove(
-        "show"
-    );
+    ).classList.remove("show");
 
 }
 
@@ -1071,19 +1220,23 @@ document.getElementById(
                 .trim();
 
 
-        const filtered =
+        filteredPlayers =
             players.filter(
                 function(player) {
 
-                    return player.name
-                        .toLowerCase()
-                        .includes(query);
+                    return String(
+                        player.name
+                    )
+                    .toLowerCase()
+                    .includes(query);
 
                 }
             );
 
 
-        renderLeaderboard(filtered);
+        renderLeaderboard(
+            filteredPlayers
+        );
 
     }
 );
@@ -1095,32 +1248,31 @@ COPY SERVER IP
 ==========================================================
 */
 
-function copyIP(ip) {
+async function copyIP(ip) {
 
-    if (
-        navigator.clipboard &&
-        navigator.clipboard.writeText
-    ) {
+    try {
 
-        navigator.clipboard
-            .writeText(ip)
-            .then(function() {
+        if (
+            navigator.clipboard &&
+            navigator.clipboard.writeText
+        ) {
 
-                alert(
-                    "Copied: " + ip
-                );
+            await navigator.clipboard.writeText(ip);
 
-            })
-            .catch(function() {
+            alert(
+                "Copied: " + ip
+            );
 
-                prompt(
-                    "Copy this server address:",
-                    ip
-                );
+        } else {
 
-            });
+            prompt(
+                "Copy this server address:",
+                ip
+            );
 
-    } else {
+        }
+
+    } catch (error) {
 
         prompt(
             "Copy this server address:",
