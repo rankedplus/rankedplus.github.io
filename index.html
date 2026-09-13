@@ -1,166 +1,1218 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RankedPlus — Live Dashboard</title>
-  <style>
-    :root {
-      --bg: #0b0f14; --panel: #121820; --border: #1e2a38; --text: #e6edf3;
-      --muted: #8b9cb3; --accent: #3b82f6; --accent-hover: #2563eb;
-      --success: #22c55e; --danger: #ef4444; --radius: 12px;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RankedPlus | Minecraft PvP</title>
+
+<style>
+:root {
+    --orange: #ff7a00;
+    --orange-light: #ff9d3d;
+    --background: #090a0c;
+    --panel: #111318;
+    --panel-light: #171a20;
+    --border: #292d35;
+    --text: #f5f5f5;
+    --muted: #8f949d;
+    --green: #52d273;
+    --red: #ff5d5d;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--background);
+    color: var(--text);
+    min-height: 100vh;
+}
+
+/* NAVBAR */
+
+nav {
+    height: 68px;
+    background: #0d0f12ee;
+    border-bottom: 1px solid var(--border);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 6%;
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    backdrop-filter: blur(10px);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 900;
+}
+
+.logo span {
+    color: var(--orange);
+}
+
+nav a {
+    color: var(--muted);
+    text-decoration: none;
+
+    margin-left: 25px;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    transition: 0.2s;
+}
+
+nav a:hover {
+    color: var(--orange);
+}
+
+/* HERO */
+
+.hero {
+    text-align: center;
+
+    padding: 90px 20px 70px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255, 122, 0, 0.12),
+            transparent 60%
+        );
+}
+
+.tag {
+    display: inline-block;
+
+    padding: 7px 13px;
+
+    border-radius: 999px;
+
+    border: 1px solid rgba(255, 122, 0, 0.35);
+
+    background: rgba(255, 122, 0, 0.08);
+
+    color: var(--orange-light);
+
+    font-size: 12px;
+    font-weight: 800;
+
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: clamp(40px, 7vw, 70px);
+
+    font-weight: 950;
+
+    letter-spacing: -2px;
+}
+
+.hero h1 span {
+    color: var(--orange);
+}
+
+.hero p {
+    color: var(--muted);
+
+    max-width: 650px;
+
+    margin: 17px auto 30px;
+
+    font-size: 16px;
+}
+
+/* CONNECT BUTTONS */
+
+.connect {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    gap: 10px;
+}
+
+.connect button {
+    background: var(--panel-light);
+
+    border: 1px solid var(--border);
+
+    color: white;
+
+    padding: 13px 17px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    transition: 0.2s;
+}
+
+.connect button:hover {
+    border-color: var(--orange);
+    color: var(--orange);
+}
+
+/* MAIN */
+
+.container {
+    width: 88%;
+    max-width: 1200px;
+
+    margin: 0 auto 70px;
+}
+
+/* STAT CARDS */
+
+.stats {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 14px;
+
+    margin-bottom: 45px;
+}
+
+.stat {
+    background: var(--panel);
+
+    border: 1px solid var(--border);
+
+    border-radius: 11px;
+
+    padding: 21px;
+}
+
+.stat small {
+    color: var(--muted);
+
+    display: block;
+
+    margin-bottom: 9px;
+
+    font-weight: bold;
+}
+
+.stat strong {
+    font-size: 27px;
+}
+
+.online {
+    color: var(--green);
+}
+
+.dot {
+    display: inline-block;
+
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: var(--green);
+
+    margin-right: 7px;
+}
+
+/* SECTIONS */
+
+.section {
+    margin-top: 40px;
+}
+
+.section h2 {
+    font-size: 26px;
+
+    margin-bottom: 18px;
+}
+
+/* SEARCH */
+
+.search {
+    width: 100%;
+
+    padding: 15px;
+
+    margin-bottom: 13px;
+
+    background: var(--panel);
+
+    border: 1px solid var(--border);
+
+    border-radius: 8px;
+
+    color: white;
+
+    outline: none;
+
+    font-size: 14px;
+}
+
+.search:focus {
+    border-color: var(--orange);
+}
+
+/* LEADERBOARD */
+
+.leaderboard {
+    background: var(--panel);
+
+    border: 1px solid var(--border);
+
+    border-radius: 11px;
+
+    overflow: hidden;
+}
+
+.row {
+    display: grid;
+
+    grid-template-columns:
+        65px
+        2fr
+        1fr
+        1fr
+        1fr
+        1fr;
+
+    align-items: center;
+
+    padding: 17px 20px;
+}
+
+.header {
+    background: var(--panel-light);
+
+    color: var(--muted);
+
+    font-size: 11px;
+
+    text-transform: uppercase;
+
+    font-weight: 800;
+}
+
+.player {
+    border-top: 1px solid var(--border);
+
+    cursor: pointer;
+
+    transition: 0.15s;
+}
+
+.player:hover {
+    background: #191c22;
+}
+
+.rank {
+    color: var(--muted);
+
+    font-weight: 900;
+}
+
+.player-name {
+    font-weight: 800;
+}
+
+.rating {
+    font-weight: 900;
+}
+
+.tier {
+    display: inline-block;
+
+    padding: 5px 9px;
+
+    border-radius: 5px;
+
+    background: rgba(255, 122, 0, 0.12);
+
+    border: 1px solid rgba(255, 122, 0, 0.25);
+
+    color: var(--orange-light);
+
+    font-size: 12px;
+
+    font-weight: 900;
+}
+
+/* PROFILE */
+
+.profile {
+    display: none;
+
+    margin-top: 18px;
+
+    background: var(--panel);
+
+    border: 1px solid var(--border);
+
+    border-radius: 11px;
+
+    padding: 23px;
+}
+
+.profile.show {
+    display: block;
+}
+
+.profile-top {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+.profile-top h3 {
+    font-size: 26px;
+}
+
+.close {
+    background: none;
+
+    border: none;
+
+    color: var(--muted);
+
+    font-size: 25px;
+
+    cursor: pointer;
+}
+
+.profile-grid {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 12px;
+
+    margin-top: 20px;
+}
+
+.profile-stat {
+    background: var(--panel-light);
+
+    padding: 16px;
+
+    border-radius: 8px;
+}
+
+.profile-stat small {
+    color: var(--muted);
+}
+
+.profile-stat b {
+    display: block;
+
+    font-size: 22px;
+
+    margin-top: 6px;
+}
+
+.notice {
+    margin-top: 16px;
+
+    padding: 14px;
+
+    border-radius: 8px;
+
+    background: rgba(255, 122, 0, 0.07);
+
+    border: 1px solid rgba(255, 122, 0, 0.18);
+
+    color: #c9cbd0;
+
+    font-size: 13px;
+}
+
+/* SERVER */
+
+.server-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 14px;
+}
+
+.server {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 15px;
+
+    background: var(--panel);
+
+    border: 1px solid var(--border);
+
+    border-radius: 11px;
+
+    padding: 19px;
+}
+
+.server-label {
+    color: var(--muted);
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    text-transform: uppercase;
+}
+
+.server-ip {
+    font-family: monospace;
+
+    margin-top: 7px;
+
+    font-size: 15px;
+}
+
+.copy {
+    background: var(--panel-light);
+
+    border: 1px solid var(--border);
+
+    color: white;
+
+    border-radius: 7px;
+
+    padding: 9px 13px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+}
+
+.copy:hover {
+    border-color: var(--orange);
+
+    color: var(--orange);
+}
+
+/* FOOTER */
+
+footer {
+    border-top: 1px solid var(--border);
+
+    text-align: center;
+
+    color: #666;
+
+    padding: 30px;
+
+    margin-top: 70px;
+
+    font-size: 13px;
+}
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: system-ui, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; padding: 0; }
-    header { background: #0f172a; border-bottom: 1px solid var(--border); padding: 1.25rem 2rem; display: flex; justify-content: space-between; align-items: center; }
-    header h1 { font-size: 1.5rem; background: linear-gradient(90deg, #60a5fa, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    header input { background: var(--panel); border: 1px solid var(--border); color: var(--text); padding: 0.4rem 0.75rem; border-radius: 8px; width: 220px; }
-    main { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem; display: grid; gap: 1.5rem; }
-    .card { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; }
-    .card h2 { font-size: 1.1rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
-    label { display: block; font-size: 0.8rem; color: var(--muted); margin-bottom: 0.35rem; font-weight: 500; }
-    input { width: 100%; background: var(--bg); border: 1px solid var(--border); color: var(--text); padding: 0.6rem 0.85rem; border-radius: 8px; margin-bottom: 0.9rem; }
-    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    button { background: var(--accent); color: white; border: none; padding: 0.65rem 1.25rem; border-radius: 8px; font-weight: 600; cursor: pointer; }
-    button:hover { background: var(--accent-hover); }
-    .result { margin-top: 1rem; padding: 1rem; border-radius: 8px; background: var(--bg); border: 1px solid var(--border); font-family: monospace; font-size: 0.85rem; white-space: pre-wrap; display: none; }
-    .result.show { display: block; }
-    .result.error { border-color: var(--danger); color: #fca5a5; }
-    .result.success { border-color: var(--success); }
-    .samples { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
-    .samples button { font-size: 0.75rem; padding: 0.35rem 0.7rem; background: var(--border); color: var(--text); }
-    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-    @media (max-width: 800px) { .grid-2, .row { grid-template-columns: 1fr; } }
-    footer { text-align: center; color: var(--muted); font-size: 0.8rem; padding: 2rem; }
-  </style>
+
+    .server-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .row {
+        grid-template-columns:
+            45px
+            2fr
+            1fr
+            1fr;
+    }
+
+    .header div:nth-child(5),
+    .header div:nth-child(6),
+    .player div:nth-child(5),
+    .player div:nth-child(6) {
+        display: none;
+    }
+
+    .profile-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    nav {
+        padding: 0 4%;
+    }
+
+    nav a {
+        margin-left: 10px;
+    }
+}
+</style>
 </head>
+
 <body>
-  <header>
-    <h1>RankedPlus Dashboard</h1>
+
+<!-- NAVIGATION -->
+
+<nav>
+
+    <div class="logo">
+        Ranked<span>Plus</span>
+    </div>
+
     <div>
-      <label for="apiBase" style="display:inline; margin-right:0.5rem">API Base</label>
-      <input type="text" id="apiBase" placeholder="http://localhost:8080" />
+        <a href="#home">Home</a>
+        <a href="#leaderboard">Leaderboard</a>
+        <a href="#server">Server</a>
     </div>
-  </header>
 
-  <main>
-    <!-- Player Context -->
-    <section class="card">
-      <h2>👤 Player Context</h2>
-      <div class="samples" id="samplePlayers"></div>
-      <div class="row">
-        <div>
-          <label for="playerUuid">Player UUID</label>
-          <input id="playerUuid" type="text" placeholder="11111111-1111-1111-1111-111111111111" />
-        </div>
-        <div>
-          <label for="ladder">Ladder</label>
-          <input id="ladder" type="text" value="duels" />
-        </div>
-      </div>
-      <button id="btnLookup">Lookup Player</button>
-      <div id="contextResult" class="result"></div>
-    </section>
+</nav>
 
-    <div class="grid-2">
-      <!-- Create Matchd -->
-      <section class="card">
-        <h2>⚔️ Create Match</h2>
-        <label for="cLadder">Ladder</label>
-        <input id="cLadder" type="text" value="duels" />
-        <div class="row">
-          <div><label for="playerA">Player A UUID</label><input id="playerA" type="text" /></div>
-          <div><label for="playerAIgn">Player A IGN</label><input id="playerAIgn" type="text" /></div>
-        </div>
-        <div class="row">
-          <div><label for="playerB">Player B UUID</label><input id="playerB" type="text" /></div>
-          <div><label for="playerBIgn">Player B IGN</label><input id="playerBIgn" type="text" /></div>
-        </div>
-        <button id="btnCreate">Create Match</button>
-        <div id="createResult" class="result"></div>
-      </section>
 
-      <!-- Resolve Match -->
-      <section class="card">
-        <h2>🏆 Resolve Match</h2>
-        <label for="matchId">Match ID</label>
-        <input id="matchId" type="number" placeholder="1" />
-        <label for="winnerUuid">Winner UUID</label>
-        <input id="winnerUuid" type="text" />
-        <button id="btnResolve">Resolve Match</button>
-        <div id="resolveResult" class="result"></div>
-      </section>
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+    <div class="tag">
+        MINECRAFT PVP NETWORK
     </div>
-  </main>
 
-  <footer><p>&copy; RankedPlus Live System Panel</p></footer>
+    <h1>
+        Climb the <span>Ranked</span> Ladder.
+    </h1>
 
-  <script>
-    function getApiBase() {
-      const val = document.getElementById('apiBase').value.trim();
-      return val ? val.replace(/\/$/, '') : 'http://localhost:8080';
+    <p>
+        Compete in ranked PvP, earn rating, and prove where you belong.
+    </p>
+
+    <div class="connect">
+
+        <button onclick="copyIP('roosevelt-colt.tun.ply.gg')">
+            Java: roosevelt-colt.tun.ply.gg
+        </button>
+
+        <button onclick="copyIP('roosevelt-vauxhall.tun.ply.gg:46599')">
+            Bedrock: roosevelt-vauxhall.tun.ply.gg:46599
+        </button>
+
+    </div>
+
+</section>
+
+
+<div class="container">
+
+
+<!-- SERVER STATS -->
+
+<div class="stats">
+
+    <div class="stat">
+
+        <small>
+            PLAYERS RANKED
+        </small>
+
+        <strong id="playersRanked">
+            0
+        </strong>
+
+    </div>
+
+
+    <div class="stat">
+
+        <small>
+            MATCHES PLAYED
+        </small>
+
+        <strong id="matchesPlayed">
+            0
+        </strong>
+
+    </div>
+
+
+    <div class="stat">
+
+        <small>
+            SERVER STATUS
+        </small>
+
+        <strong class="online">
+            <span class="dot"></span>
+            Online
+        </strong>
+
+    </div>
+
+
+    <div class="stat">
+
+        <small>
+            SEASON
+        </small>
+
+        <strong>
+            #1
+        </strong>
+
+    </div>
+
+</div>
+
+
+<!-- LEADERBOARD -->
+
+<section class="section" id="leaderboard">
+
+    <h2>
+        🏆 Leaderboard
+    </h2>
+
+
+    <input
+        class="search"
+        id="search"
+        type="text"
+        placeholder="Search for a player..."
+    >
+
+
+    <div class="leaderboard">
+
+        <div class="row header">
+
+            <div>#</div>
+
+            <div>Player</div>
+
+            <div>Rating</div>
+
+            <div>Tier</div>
+
+            <div>Wins</div>
+
+            <div>Win Rate</div>
+
+        </div>
+
+
+        <div id="leaderboardRows"></div>
+
+    </div>
+
+
+    <!-- PLAYER PROFILE -->
+
+    <div class="profile" id="profile">
+
+        <div class="profile-top">
+
+            <h3 id="profileName">
+                Player
+            </h3>
+
+            <button
+                class="close"
+                onclick="closeProfile()"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="profile-grid">
+
+            <div class="profile-stat">
+
+                <small>
+                    Rating
+                </small>
+
+                <b id="profileRating">
+                    -
+                </b>
+
+            </div>
+
+
+            <div class="profile-stat">
+
+                <small>
+                    Tier
+                </small>
+
+                <b id="profileTier">
+                    -
+                </b>
+
+            </div>
+
+
+            <div class="profile-stat">
+
+                <small>
+                    Wins
+                </small>
+
+                <b id="profileWins">
+                    -
+                </b>
+
+            </div>
+
+
+            <div class="profile-stat">
+
+                <small>
+                    Losses
+                </small>
+
+                <b id="profileLosses">
+                    -
+                </b>
+
+            </div>
+
+        </div>
+
+
+        <div class="notice">
+
+            Player profiles are ready for live RankedPlus API data.
+            The current players are example data until the backend
+            exposes a leaderboard endpoint.
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SERVER -->
+
+<section class="section" id="server">
+
+    <h2>
+        🖥 Server
+    </h2>
+
+
+    <div class="server-grid">
+
+
+        <div class="server">
+
+            <div>
+
+                <div class="server-label">
+                    Java Edition
+                </div>
+
+                <div class="server-ip">
+                    roosevelt-colt.tun.ply.gg
+                </div>
+
+            </div>
+
+
+            <button
+                class="copy"
+                onclick="copyIP('roosevelt-colt.tun.ply.gg')"
+            >
+                Copy
+            </button>
+
+        </div>
+
+
+        <div class="server">
+
+            <div>
+
+                <div class="server-label">
+                    Bedrock Edition
+                </div>
+
+                <div class="server-ip">
+                    roosevelt-vauxhall.tun.ply.gg:46599
+                </div>
+
+            </div>
+
+
+            <button
+                class="copy"
+                onclick="copyIP('roosevelt-vauxhall.tun.ply.gg:46599')"
+            >
+                Copy
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</div>
+
+
+<footer>
+
+    RankedPlus Minecraft PvP © 2026
+
+</footer>
+
+
+<script>
+
+/*
+==========================================================
+RANKEDPLUS PLAYER DATA
+==========================================================
+
+This is currently example data.
+
+When we connect your RankedPlus backend,
+this section will be replaced with API data.
+*/
+
+const players = [
+
+    {
+        name: "Marlow",
+        rating: 1854,
+        tier: "LT1",
+        wins: 238,
+        losses: 52
+    },
+
+    {
+        name: "Viperkai",
+        rating: 1792,
+        tier: "HT1",
+        wins: 214,
+        losses: 57
+    },
+
+    {
+        name: "Drifted",
+        rating: 1711,
+        tier: "LT2",
+        wins: 192,
+        losses: 61
+    },
+
+    {
+        name: "Coldfier",
+        rating: 1660,
+        tier: "HT2",
+        wins: 176,
+        losses: 65
+    },
+
+    {
+        name: "TryHards",
+        rating: 1598,
+        tier: "LT3",
+        wins: 155,
+        losses: 66
+    },
+
+    {
+        name: "PlayerSix",
+        rating: 1515,
+        tier: "HT3",
+        wins: 141,
+        losses: 72
+    },
+
+    {
+        name: "PlayerSeven",
+        rating: 1482,
+        tier: "LT3",
+        wins: 133,
+        losses: 70
+    },
+
+    {
+        name: "PlayerEight",
+        rating: 1410,
+        tier: "HT4",
+        wins: 121,
+        losses: 78
     }
 
-    function showResult(elementId, data, isError = false) {
-      const el = document.getElementById(elementId);
-      el.className = `result show ${isError ? 'error' : 'success'}`;
-      el.textContent = typeof data === 'string' ? data : JSON.stringify(data, null, 2);
+];
+
+
+/* WIN RATE */
+
+function getWinRate(player) {
+
+    const total =
+        player.wins + player.losses;
+
+    if (total === 0) {
+        return 0;
     }
 
-    const samples = [
-      { uuid: '11111111-1111-1111-1111-111111111111', ladder: 'duels', label: 'Sample 1' },
-      { uuid: '22222222-2222-2222-2222-222222222222', ladder: 'skywars', label: 'Sample 2' }
-    ];
-    const container = document.getElementById('samplePlayers');
-    samples.forEach(s => {
-      const btn = document.createElement('button');
-      btn.textContent = s.label;
-      btn.addEventListener('click', () => {
-        document.getElementById('playerUuid').value = s.uuid;
-        document.getElementById('ladder').value = s.ladder;
-      });
-      container.appendChild(btn);
+    return Math.round(
+        (player.wins / total) * 100
+    );
+
+}
+
+
+/* SECURITY */
+
+function escapeHTML(text) {
+
+    return String(text).replace(
+        /[&<>"']/g,
+        function(character) {
+
+            return {
+                "&": "&amp;",
+                "<": "&lt;",
+                ">": "&gt;",
+                '"': "&quot;",
+                "'": "&#039;"
+            }[character];
+
+        }
+    );
+
+}
+
+
+/* RENDER LEADERBOARD */
+
+function renderLeaderboard(list = players) {
+
+    const container =
+        document.getElementById(
+            "leaderboardRows"
+        );
+
+    container.innerHTML = "";
+
+
+    list.forEach(function(player, index) {
+
+        const row =
+            document.createElement("div");
+
+        row.className = "row player";
+
+        row.onclick =
+            function() {
+                openProfile(player);
+            };
+
+
+        row.innerHTML = `
+
+            <div class="rank">
+                ${index + 1}
+            </div>
+
+            <div class="player-name">
+                ${escapeHTML(player.name)}
+            </div>
+
+            <div class="rating">
+                ${player.rating}
+            </div>
+
+            <div>
+                <span class="tier">
+                    ${escapeHTML(player.tier)}
+                </span>
+            </div>
+
+            <div>
+                ${player.wins}
+            </div>
+
+            <div class="online">
+                ${getWinRate(player)}%
+            </div>
+
+        `;
+
+
+        container.appendChild(row);
+
     });
 
-    document.getElementById('btnLookup').addEventListener('click', async () => {
-      const uuid = document.getElementById('playerUuid').value.trim();
-      const ladder = document.getElementById('ladder').value.trim();
-      if (!uuid || !ladder) return alert('Enter Player UUID and Ladder.');
-      try {
-        const res = await fetch(`${getApiBase()}/player/${uuid}/${ladder}`);
-        if (!res.ok) throw new Error(`Status: ${res.status}`);
-        showResult('contextResult', await res.json());
-      } catch (err) { showResult('contextResult', err.message, true); }
-    });
 
-    document.getElementById('btnCreate').addEventListener('click', async () => {
-      const payload = {
-        ladder: document.getElementById('cLadder').value.trim(),
-        playerA: { uuid: document.getElementById('playerA').value.trim(), ign: document.getElementById('playerAIgn').value.trim() },
-        playerB: { uuid: document.getElementById('playerB').value.trim(), ign: document.getElementById('playerBIgn').value.trim() }
-      };
-      if (!payload.ladder || !payload.playerA.uuid || !payload.playerB.uuid) return alert('Fill in Ladder and Player UUIDs.');
-      try {
-        const res = await fetch(`${getApiBase()}/match/create`, {
-          method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload)
-        });
-        if (!res.ok) throw new Error(`Status: ${res.status}`);
-        showResult('createResult', await res.json());
-      } catch (err) { showResult('createResult', err.message, true); }
-    });
+    document.getElementById(
+        "playersRanked"
+    ).textContent = players.length;
 
-    document.getElementById('btnResolve').addEventListener('click', async () => {
-      const matchId = document.getElementById('matchId').value.trim();
-      const winnerUuid = document.getElementById('winnerUuid').value.trim();
-      if (!matchId || !winnerUuid) return alert('Fill in Match ID and Winner UUID.');
-      try {
-        const res = await fetch(`${getApiBase()}/match/resolve`, {
-          method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ matchId: parseInt(matchId, 10), winnerUuid })
-        });
-        if (!res.ok) throw new Error(`Status: ${res.status}`);
-        showResult('resolveResult', await res.json());
-      } catch (err) { showResult('resolveResult', err.message, true); }
-    });
-  </script>
+
+    const totalMatches =
+        players.reduce(
+            function(total, player) {
+
+                return total +
+                    player.wins +
+                    player.losses;
+
+            },
+            0
+        );
+
+
+    document.getElementById(
+        "matchesPlayed"
+    ).textContent = totalMatches;
+
+}
+
+
+/* PLAYER PROFILE */
+
+function openProfile(player) {
+
+    document.getElementById(
+        "profileName"
+    ).textContent = player.name;
+
+
+    document.getElementById(
+        "profileRating"
+    ).textContent = player.rating;
+
+
+    document.getElementById(
+        "profileTier"
+    ).textContent = player.tier;
+
+
+    document.getElementById(
+        "profileWins"
+    ).textContent = player.wins;
+
+
+    document.getElementById(
+        "profileLosses"
+    ).textContent = player.losses;
+
+
+    document.getElementById(
+        "profile"
+    ).classList.add("show");
+
+}
+
+
+/* CLOSE PROFILE */
+
+function closeProfile() {
+
+    document.getElementById(
+        "profile"
+    ).classList.remove("show");
+
+}
+
+
+/* SEARCH */
+
+document.getElementById(
+    "search"
+).addEventListener(
+    "input",
+    function(event) {
+
+        const query =
+            event.target.value
+                .toLowerCase()
+                .trim();
+
+
+        const filtered =
+            players.filter(
+                function(player) {
+
+                    return player.name
+                        .toLowerCase()
+                        .includes(query);
+
+                }
+            );
+
+
+        renderLeaderboard(filtered);
+
+    }
+);
+
+
+/* COPY SERVER IP */
+
+function copyIP(ip) {
+
+    if (
+        navigator.clipboard &&
+        navigator.clipboard.writeText
+    ) {
+
+        navigator.clipboard
+            .writeText(ip)
+            .then(function() {
+
+                alert(
+                    "Copied: " + ip
+                );
+
+            });
+
+    } else {
+
+        prompt(
+            "Copy this server address:",
+            ip
+        );
+
+    }
+
+}
+
+
+/* START */
+
+renderLeaderboard();
+
+</script>
+
 </body>
 </html>
+```
