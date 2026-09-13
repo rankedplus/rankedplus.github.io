@@ -1,5 +1,5 @@
-```html
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -37,23 +37,17 @@ body {
     min-height: 100vh;
 }
 
-/* NAVBAR */
-
 nav {
     height: 68px;
     background: #0d0f12ee;
     border-bottom: 1px solid var(--border);
-
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     padding: 0 6%;
-
     position: sticky;
     top: 0;
     z-index: 100;
-
     backdrop-filter: blur(10px);
 }
 
@@ -69,12 +63,9 @@ nav {
 nav a {
     color: var(--muted);
     text-decoration: none;
-
     margin-left: 25px;
-
     font-size: 14px;
     font-weight: bold;
-
     transition: 0.2s;
 }
 
@@ -82,13 +73,9 @@ nav a:hover {
     color: var(--orange);
 }
 
-/* HERO */
-
 .hero {
     text-align: center;
-
     padding: 90px 20px 70px;
-
     background:
         radial-gradient(
             circle at center,
@@ -99,28 +86,19 @@ nav a:hover {
 
 .tag {
     display: inline-block;
-
     padding: 7px 13px;
-
     border-radius: 999px;
-
     border: 1px solid rgba(255, 122, 0, 0.35);
-
     background: rgba(255, 122, 0, 0.08);
-
     color: var(--orange-light);
-
     font-size: 12px;
     font-weight: 800;
-
     margin-bottom: 20px;
 }
 
 .hero h1 {
     font-size: clamp(40px, 7vw, 70px);
-
     font-weight: 950;
-
     letter-spacing: -2px;
 }
 
@@ -130,39 +108,26 @@ nav a:hover {
 
 .hero p {
     color: var(--muted);
-
     max-width: 650px;
-
     margin: 17px auto 30px;
-
     font-size: 16px;
 }
-
-/* CONNECT BUTTONS */
 
 .connect {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-
     gap: 10px;
 }
 
 .connect button {
     background: var(--panel-light);
-
     border: 1px solid var(--border);
-
     color: white;
-
     padding: 13px 17px;
-
     border-radius: 8px;
-
     cursor: pointer;
-
     font-weight: bold;
-
     transition: 0.2s;
 }
 
@@ -171,44 +136,30 @@ nav a:hover {
     color: var(--orange);
 }
 
-/* MAIN */
-
 .container {
     width: 88%;
     max-width: 1200px;
-
     margin: 0 auto 70px;
 }
 
-/* STAT CARDS */
-
 .stats {
     display: grid;
-
     grid-template-columns: repeat(4, 1fr);
-
     gap: 14px;
-
     margin-bottom: 45px;
 }
 
 .stat {
     background: var(--panel);
-
     border: 1px solid var(--border);
-
     border-radius: 11px;
-
     padding: 21px;
 }
 
 .stat small {
     color: var(--muted);
-
     display: block;
-
     margin-bottom: 9px;
-
     font-weight: bold;
 }
 
@@ -222,18 +173,12 @@ nav a:hover {
 
 .dot {
     display: inline-block;
-
     width: 8px;
     height: 8px;
-
     border-radius: 50%;
-
     background: var(--green);
-
     margin-right: 7px;
 }
-
-/* SECTIONS */
 
 .section {
     margin-top: 40px;
@@ -241,29 +186,18 @@ nav a:hover {
 
 .section h2 {
     font-size: 26px;
-
     margin-bottom: 18px;
 }
 
-/* SEARCH */
-
 .search {
     width: 100%;
-
     padding: 15px;
-
     margin-bottom: 13px;
-
     background: var(--panel);
-
     border: 1px solid var(--border);
-
     border-radius: 8px;
-
     color: white;
-
     outline: none;
-
     font-size: 14px;
 }
 
@@ -271,21 +205,15 @@ nav a:hover {
     border-color: var(--orange);
 }
 
-/* LEADERBOARD */
-
 .leaderboard {
     background: var(--panel);
-
     border: 1px solid var(--border);
-
     border-radius: 11px;
-
     overflow: hidden;
 }
 
 .row {
     display: grid;
-
     grid-template-columns:
         65px
         2fr
@@ -293,29 +221,21 @@ nav a:hover {
         1fr
         1fr
         1fr;
-
     align-items: center;
-
     padding: 17px 20px;
 }
 
 .header {
     background: var(--panel-light);
-
     color: var(--muted);
-
     font-size: 11px;
-
     text-transform: uppercase;
-
     font-weight: 800;
 }
 
 .player {
     border-top: 1px solid var(--border);
-
     cursor: pointer;
-
     transition: 0.15s;
 }
 
@@ -325,7 +245,6 @@ nav a:hover {
 
 .rank {
     color: var(--muted);
-
     font-weight: 900;
 }
 
@@ -339,35 +258,21 @@ nav a:hover {
 
 .tier {
     display: inline-block;
-
     padding: 5px 9px;
-
     border-radius: 5px;
-
     background: rgba(255, 122, 0, 0.12);
-
     border: 1px solid rgba(255, 122, 0, 0.25);
-
     color: var(--orange-light);
-
     font-size: 12px;
-
     font-weight: 900;
 }
 
-/* PROFILE */
-
 .profile {
     display: none;
-
     margin-top: 18px;
-
     background: var(--panel);
-
     border: 1px solid var(--border);
-
     border-radius: 11px;
-
     padding: 23px;
 }
 
@@ -377,9 +282,7 @@ nav a:hover {
 
 .profile-top {
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
 }
 
@@ -389,31 +292,22 @@ nav a:hover {
 
 .close {
     background: none;
-
     border: none;
-
     color: var(--muted);
-
     font-size: 25px;
-
     cursor: pointer;
 }
 
 .profile-grid {
     display: grid;
-
     grid-template-columns: repeat(4, 1fr);
-
     gap: 12px;
-
     margin-top: 20px;
 }
 
 .profile-stat {
     background: var(--panel-light);
-
     padding: 16px;
-
     border-radius: 8px;
 }
 
@@ -423,113 +317,85 @@ nav a:hover {
 
 .profile-stat b {
     display: block;
-
     font-size: 22px;
-
     margin-top: 6px;
 }
 
 .notice {
     margin-top: 16px;
-
     padding: 14px;
-
     border-radius: 8px;
-
     background: rgba(255, 122, 0, 0.07);
-
     border: 1px solid rgba(255, 122, 0, 0.18);
-
     color: #c9cbd0;
-
     font-size: 13px;
 }
 
-/* SERVER */
-
 .server-grid {
     display: grid;
-
     grid-template-columns: repeat(2, 1fr);
-
     gap: 14px;
 }
 
 .server {
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
-
     gap: 15px;
-
     background: var(--panel);
-
     border: 1px solid var(--border);
-
     border-radius: 11px;
-
     padding: 19px;
 }
 
 .server-label {
     color: var(--muted);
-
     font-size: 12px;
-
     font-weight: 800;
-
     text-transform: uppercase;
 }
 
 .server-ip {
     font-family: monospace;
-
     margin-top: 7px;
-
     font-size: 15px;
 }
 
 .copy {
     background: var(--panel-light);
-
     border: 1px solid var(--border);
-
     color: white;
-
     border-radius: 7px;
-
     padding: 9px 13px;
-
     cursor: pointer;
-
     font-weight: bold;
 }
 
 .copy:hover {
     border-color: var(--orange);
-
     color: var(--orange);
 }
 
-/* FOOTER */
+.loading {
+    padding: 30px;
+    text-align: center;
+    color: var(--muted);
+}
+
+.error {
+    padding: 25px;
+    text-align: center;
+    color: var(--red);
+}
 
 footer {
     border-top: 1px solid var(--border);
-
     text-align: center;
-
     color: #666;
-
     padding: 30px;
-
     margin-top: 70px;
-
     font-size: 13px;
 }
-
-/* MOBILE */
 
 @media (max-width: 800px) {
 
@@ -569,427 +435,300 @@ footer {
     }
 }
 </style>
+
 </head>
 
 <body>
 
-<!-- NAVIGATION -->
-
 <nav>
 
-    <div class="logo">
-        Ranked<span>Plus</span>
-    </div>
+```
+<div class="logo">
+    Ranked<span>Plus</span>
+</div>
 
-    <div>
-        <a href="#home">Home</a>
-        <a href="#leaderboard">Leaderboard</a>
-        <a href="#server">Server</a>
-    </div>
+<div>
+    <a href="#home">Home</a>
+    <a href="#leaderboard">Leaderboard</a>
+    <a href="#server">Server</a>
+</div>
+```
 
 </nav>
 
-
-<!-- HERO -->
-
 <section class="hero" id="home">
 
-    <div class="tag">
-        MINECRAFT PVP NETWORK
-    </div>
+```
+<div class="tag">
+    MINECRAFT PVP NETWORK
+</div>
 
-    <h1>
-        Climb the <span>Ranked</span> Ladder.
-    </h1>
+<h1>
+    Climb the <span>Ranked</span> Ladder.
+</h1>
 
-    <p>
-        Compete in ranked PvP, earn rating, and prove where you belong.
-    </p>
+<p>
+    Compete in ranked PvP, earn rating, and prove where you belong.
+</p>
 
-    <div class="connect">
+<div class="connect">
 
-        <button onclick="copyIP('roosevelt-colt.tun.ply.gg')">
-            Java: roosevelt-colt.tun.ply.gg
-        </button>
+    <button onclick="copyIP('roosevelt-colt.tun.ply.gg')">
+        Java: roosevelt-colt.tun.ply.gg
+    </button>
 
-        <button onclick="copyIP('roosevelt-vauxhall.tun.ply.gg:46599')">
-            Bedrock: roosevelt-vauxhall.tun.ply.gg:46599
-        </button>
+    <button onclick="copyIP('roosevelt-vauxhall.tun.ply.gg:46599')">
+        Bedrock: roosevelt-vauxhall.tun.ply.gg:46599
+    </button>
 
-    </div>
+</div>
+```
 
 </section>
-
 
 <div class="container">
 
-
-<!-- SERVER STATS -->
-
 <div class="stats">
 
-    <div class="stat">
-
-        <small>
-            PLAYERS RANKED
-        </small>
-
-        <strong id="playersRanked">
-            0
-        </strong>
-
-    </div>
-
-
-    <div class="stat">
-
-        <small>
-            MATCHES PLAYED
-        </small>
-
-        <strong id="matchesPlayed">
-            0
-        </strong>
-
-    </div>
-
-
-    <div class="stat">
-
-        <small>
-            SERVER STATUS
-        </small>
-
-        <strong class="online">
-            <span class="dot"></span>
-            Online
-        </strong>
-
-    </div>
-
-
-    <div class="stat">
-
-        <small>
-            SEASON
-        </small>
-
-        <strong>
-            #1
-        </strong>
-
-    </div>
-
+```
+<div class="stat">
+    <small>PLAYERS RANKED</small>
+    <strong id="playersRanked">0</strong>
 </div>
 
+<div class="stat">
+    <small>MATCHES PLAYED</small>
+    <strong id="matchesPlayed">0</strong>
+</div>
 
-<!-- LEADERBOARD -->
+<div class="stat">
+    <small>SERVER STATUS</small>
+    <strong class="online">
+        <span class="dot"></span>
+        <span id="serverStatus">Online</span>
+    </strong>
+</div>
+
+<div class="stat">
+    <small>SEASON</small>
+    <strong>#1</strong>
+</div>
+```
+
+</div>
 
 <section class="section" id="leaderboard">
 
-    <h2>
-        🏆 Leaderboard
-    </h2>
+```
+<h2>
+    🏆 Leaderboard
+</h2>
 
+<input
+    class="search"
+    id="search"
+    type="text"
+    placeholder="Search for a player..."
+>
 
-    <input
-        class="search"
-        id="search"
-        type="text"
-        placeholder="Search for a player..."
-    >
+<div class="leaderboard">
 
+    <div class="row header">
 
-    <div class="leaderboard">
-
-        <div class="row header">
-
-            <div>#</div>
-
-            <div>Player</div>
-
-            <div>Rating</div>
-
-            <div>Tier</div>
-
-            <div>Wins</div>
-
-            <div>Win Rate</div>
-
-        </div>
-
-
-        <div id="leaderboardRows"></div>
+        <div>#</div>
+        <div>Player</div>
+        <div>Rating</div>
+        <div>Tier</div>
+        <div>Wins</div>
+        <div>Win Rate</div>
 
     </div>
 
+    <div id="leaderboardRows">
 
-    <!-- PLAYER PROFILE -->
-
-    <div class="profile" id="profile">
-
-        <div class="profile-top">
-
-            <h3 id="profileName">
-                Player
-            </h3>
-
-            <button
-                class="close"
-                onclick="closeProfile()"
-            >
-                ×
-            </button>
-
-        </div>
-
-
-        <div class="profile-grid">
-
-            <div class="profile-stat">
-
-                <small>
-                    Rating
-                </small>
-
-                <b id="profileRating">
-                    -
-                </b>
-
-            </div>
-
-
-            <div class="profile-stat">
-
-                <small>
-                    Tier
-                </small>
-
-                <b id="profileTier">
-                    -
-                </b>
-
-            </div>
-
-
-            <div class="profile-stat">
-
-                <small>
-                    Wins
-                </small>
-
-                <b id="profileWins">
-                    -
-                </b>
-
-            </div>
-
-
-            <div class="profile-stat">
-
-                <small>
-                    Losses
-                </small>
-
-                <b id="profileLosses">
-                    -
-                </b>
-
-            </div>
-
-        </div>
-
-
-        <div class="notice">
-
-            Player profiles are ready for live RankedPlus API data.
-            The current players are example data until the backend
-            exposes a leaderboard endpoint.
-
+        <div class="loading">
+            Loading leaderboard...
         </div>
 
     </div>
-
-</section>
-
-
-<!-- SERVER -->
-
-<section class="section" id="server">
-
-    <h2>
-        🖥 Server
-    </h2>
-
-
-    <div class="server-grid">
-
-
-        <div class="server">
-
-            <div>
-
-                <div class="server-label">
-                    Java Edition
-                </div>
-
-                <div class="server-ip">
-                    roosevelt-colt.tun.ply.gg
-                </div>
-
-            </div>
-
-
-            <button
-                class="copy"
-                onclick="copyIP('roosevelt-colt.tun.ply.gg')"
-            >
-                Copy
-            </button>
-
-        </div>
-
-
-        <div class="server">
-
-            <div>
-
-                <div class="server-label">
-                    Bedrock Edition
-                </div>
-
-                <div class="server-ip">
-                    roosevelt-vauxhall.tun.ply.gg:46599
-                </div>
-
-            </div>
-
-
-            <button
-                class="copy"
-                onclick="copyIP('roosevelt-vauxhall.tun.ply.gg:46599')"
-            >
-                Copy
-            </button>
-
-        </div>
-
-    </div>
-
-</section>
-
 
 </div>
 
+<div class="profile" id="profile">
+
+    <div class="profile-top">
+
+        <h3 id="profileName">
+            Player
+        </h3>
+
+        <button
+            class="close"
+            onclick="closeProfile()"
+        >
+            ×
+        </button>
+
+    </div>
+
+    <div class="profile-grid">
+
+        <div class="profile-stat">
+            <small>Rating</small>
+            <b id="profileRating">-</b>
+        </div>
+
+        <div class="profile-stat">
+            <small>Tier</small>
+            <b id="profileTier">-</b>
+        </div>
+
+        <div class="profile-stat">
+            <small>Wins</small>
+            <b id="profileWins">-</b>
+        </div>
+
+        <div class="profile-stat">
+            <small>Losses</small>
+            <b id="profileLosses">-</b>
+        </div>
+
+    </div>
+
+    <div class="notice">
+        Player information loaded directly from the RankedPlus backend.
+    </div>
+
+</div>
+```
+
+</section>
+
+<section class="section" id="server">
+
+```
+<h2>
+    🖥 Server
+</h2>
+
+<div class="server-grid">
+
+    <div class="server">
+
+        <div>
+
+            <div class="server-label">
+                Java Edition
+            </div>
+
+            <div class="server-ip">
+                roosevelt-colt.tun.ply.gg
+            </div>
+
+        </div>
+
+        <button
+            class="copy"
+            onclick="copyIP('roosevelt-colt.tun.ply.gg')"
+        >
+            Copy
+        </button>
+
+    </div>
+
+    <div class="server">
+
+        <div>
+
+            <div class="server-label">
+                Bedrock Edition
+            </div>
+
+            <div class="server-ip">
+                roosevelt-vauxhall.tun.ply.gg:46599
+            </div>
+
+        </div>
+
+        <button
+            class="copy"
+            onclick="copyIP('roosevelt-vauxhall.tun.ply.gg:46599')"
+        >
+            Copy
+        </button>
+
+    </div>
+
+</div>
+```
+
+</section>
+
+</div>
 
 <footer>
-
     RankedPlus Minecraft PvP © 2026
-
 </footer>
-
 
 <script>
 
 /*
 ==========================================================
-RANKEDPLUS PLAYER DATA
+RANKEDPLUS API
 ==========================================================
 
-This is currently example data.
+This is your Cloudflare Quick Tunnel.
 
-When we connect your RankedPlus backend,
-this section will be replaced with API data.
+IMPORTANT:
+Keep cloudflared running while you want the website
+to communicate with your local backend.
 */
 
-const players = [
+const API_URL =
+    "https://living-premium-rotary-surfing.trycloudflare.com";
 
-    {
-        name: "Marlow",
-        rating: 1854,
-        tier: "LT1",
-        wins: 238,
-        losses: 52
-    },
-
-    {
-        name: "Viperkai",
-        rating: 1792,
-        tier: "HT1",
-        wins: 214,
-        losses: 57
-    },
-
-    {
-        name: "Drifted",
-        rating: 1711,
-        tier: "LT2",
-        wins: 192,
-        losses: 61
-    },
-
-    {
-        name: "Coldfier",
-        rating: 1660,
-        tier: "HT2",
-        wins: 176,
-        losses: 65
-    },
-
-    {
-        name: "TryHards",
-        rating: 1598,
-        tier: "LT3",
-        wins: 155,
-        losses: 66
-    },
-
-    {
-        name: "PlayerSix",
-        rating: 1515,
-        tier: "HT3",
-        wins: 141,
-        losses: 72
-    },
-
-    {
-        name: "PlayerSeven",
-        rating: 1482,
-        tier: "LT3",
-        wins: 133,
-        losses: 70
-    },
-
-    {
-        name: "PlayerEight",
-        rating: 1410,
-        tier: "HT4",
-        wins: 121,
-        losses: 78
-    }
-
-];
+const LEADERBOARD_URL =
+    API_URL + "/leaderboard";
 
 
-/* WIN RATE */
+/*
+==========================================================
+PLAYER DATA
+==========================================================
+*/
+
+let players = [];
+
+
+/*
+==========================================================
+WIN RATE
+==========================================================
+*/
 
 function getWinRate(player) {
 
-    const total =
-        player.wins + player.losses;
+    const wins = Number(player.wins) || 0;
+    const losses = Number(player.losses) || 0;
+
+    const total = wins + losses;
 
     if (total === 0) {
         return 0;
     }
 
     return Math.round(
-        (player.wins / total) * 100
+        (wins / total) * 100
     );
 
 }
 
 
-/* SECURITY */
+/*
+==========================================================
+SECURITY
+==========================================================
+*/
 
 function escapeHTML(text) {
 
@@ -1011,9 +750,127 @@ function escapeHTML(text) {
 }
 
 
-/* RENDER LEADERBOARD */
+/*
+==========================================================
+LOAD LEADERBOARD FROM BACKEND
+==========================================================
+*/
 
-function renderLeaderboard(list = players) {
+async function loadLeaderboard() {
+
+    const container =
+        document.getElementById(
+            "leaderboardRows"
+        );
+
+    container.innerHTML = `
+        <div class="loading">
+            Connecting to RankedPlus API...
+        </div>
+    `;
+
+    try {
+
+        const response =
+            await fetch(
+                LEADERBOARD_URL,
+                {
+                    method: "GET",
+                    headers: {
+                        "Accept": "application/json"
+                    }
+                }
+            );
+
+        if (!response.ok) {
+
+            throw new Error(
+                "HTTP " + response.status
+            );
+
+        }
+
+        const data =
+            await response.json();
+
+
+        if (!Array.isArray(data)) {
+
+            throw new Error(
+                "Leaderboard API did not return an array."
+            );
+
+        }
+
+
+        players = data.map(function(player) {
+
+            return {
+                uuid: player.uuid,
+                name: player.name || "Unknown",
+                rating: Number(player.rating) || 0,
+                tier: player.tier || "Unranked",
+                wins: Number(player.wins) || 0,
+                losses: Number(player.losses) || 0
+            };
+
+        });
+
+
+        renderLeaderboard(players);
+
+
+        document.getElementById(
+            "serverStatus"
+        ).textContent = "Online";
+
+
+    } catch (error) {
+
+        console.error(
+            "RankedPlus API error:",
+            error
+        );
+
+
+        document.getElementById(
+            "serverStatus"
+        ).textContent = "API Error";
+
+
+        const status =
+            document.querySelector(
+                "#serverStatus"
+            );
+
+        status.parentElement.classList.remove(
+            "online"
+        );
+
+        status.parentElement.style.color =
+            "var(--red)";
+
+
+        container.innerHTML = `
+            <div class="error">
+                Could not connect to the RankedPlus API.
+                <br><br>
+                Make sure the backend and Cloudflare tunnel are running.
+            </div>
+        `;
+
+    }
+
+}
+
+
+/*
+==========================================================
+RENDER LEADERBOARD
+==========================================================
+*/
+
+function renderLeaderboard(list) {
 
     const container =
         document.getElementById(
@@ -1023,16 +880,33 @@ function renderLeaderboard(list = players) {
     container.innerHTML = "";
 
 
+    if (list.length === 0) {
+
+        container.innerHTML = `
+            <div class="loading">
+                No players found.
+            </div>
+        `;
+
+        return;
+
+    }
+
+
     list.forEach(function(player, index) {
 
         const row =
             document.createElement("div");
 
-        row.className = "row player";
+        row.className =
+            "row player";
+
 
         row.onclick =
             function() {
+
                 openProfile(player);
+
             };
 
 
@@ -1072,9 +946,23 @@ function renderLeaderboard(list = players) {
     });
 
 
+    updateStats();
+
+}
+
+
+/*
+==========================================================
+UPDATE STATS
+==========================================================
+*/
+
+function updateStats() {
+
     document.getElementById(
         "playersRanked"
-    ).textContent = players.length;
+    ).textContent =
+        players.length;
 
 
     const totalMatches =
@@ -1082,48 +970,63 @@ function renderLeaderboard(list = players) {
             function(total, player) {
 
                 return total +
-                    player.wins +
-                    player.losses;
+                    Number(player.wins || 0) +
+                    Number(player.losses || 0);
 
             },
             0
         );
 
 
+    /*
+     * Every match has two players, so divide the
+     * total number of player results by 2.
+     */
+
     document.getElementById(
         "matchesPlayed"
-    ).textContent = totalMatches;
+    ).textContent =
+        Math.floor(totalMatches / 2);
 
 }
 
 
-/* PLAYER PROFILE */
+/*
+==========================================================
+PLAYER PROFILE
+==========================================================
+*/
 
 function openProfile(player) {
 
     document.getElementById(
         "profileName"
-    ).textContent = player.name;
+    ).textContent =
+        player.name;
 
 
     document.getElementById(
         "profileRating"
-    ).textContent = player.rating;
+    ).textContent =
+        player.rating;
 
 
     document.getElementById(
         "profileTier"
-    ).textContent = player.tier;
+    ).textContent =
+        player.tier;
 
 
     document.getElementById(
         "profileWins"
-    ).textContent = player.wins;
+    ).textContent =
+        player.wins;
 
 
     document.getElementById(
         "profileLosses"
-    ).textContent = player.losses;
+    ).textContent =
+        player.losses;
 
 
     document.getElementById(
@@ -1133,18 +1036,28 @@ function openProfile(player) {
 }
 
 
-/* CLOSE PROFILE */
+/*
+==========================================================
+CLOSE PROFILE
+==========================================================
+*/
 
 function closeProfile() {
 
     document.getElementById(
         "profile"
-    ).classList.remove("show");
+    ).classList.remove(
+        "show"
+    );
 
 }
 
 
-/* SEARCH */
+/*
+==========================================================
+SEARCH
+==========================================================
+*/
 
 document.getElementById(
     "search"
@@ -1176,7 +1089,11 @@ document.getElementById(
 );
 
 
-/* COPY SERVER IP */
+/*
+==========================================================
+COPY SERVER IP
+==========================================================
+*/
 
 function copyIP(ip) {
 
@@ -1193,6 +1110,14 @@ function copyIP(ip) {
                     "Copied: " + ip
                 );
 
+            })
+            .catch(function() {
+
+                prompt(
+                    "Copy this server address:",
+                    ip
+                );
+
             });
 
     } else {
@@ -1207,12 +1132,15 @@ function copyIP(ip) {
 }
 
 
-/* START */
+/*
+==========================================================
+START
+==========================================================
+*/
 
-renderLeaderboard();
+loadLeaderboard();
 
 </script>
 
 </body>
 </html>
-```
